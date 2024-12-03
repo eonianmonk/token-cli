@@ -1,4 +1,7 @@
 .vscode
+.env
+
 node_modules
+*/ignition/deployments/*
 solidity/cache
 solidity/artifacts
