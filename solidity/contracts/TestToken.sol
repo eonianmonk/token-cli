@@ -21,7 +21,7 @@ contract TestToken is Ownable,Freezable,ITestToken {
         _unfreezeAccount(account);
     }
 
-    function mint(address receiver, uint256 amount) public onlyOwner {
+    function mint(address receiver, uint256 amount) public onlyOwner notFrozen(receiver) {
         // why mint to immediately burn?
         require(receiver != address(0), "minting to zero address is not allowed");
         // if we add totalSupply, we need to add to it here

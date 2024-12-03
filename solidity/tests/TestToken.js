@@ -28,6 +28,13 @@ describe("TestToken", async () => {
     ).to.be.revertedWith("minting to zero address is not allowed")
   })
 
+  it("Shouldn't mint to frozen account", async () => {
+    await token.freeze(addr1.address);
+    expect(
+      token.mint(addr1.address)
+    ).to.be.revertedWith("account is frozen");
+  })
+
   // Transfer Tests
   it("Should transfer tokens between accounts", async () => {
     await token.mint(addr1.address, 1000);
