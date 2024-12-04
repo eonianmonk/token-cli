@@ -45,18 +45,18 @@ If you want to interact with your deployed smart contract or on another chain yo
 
 2. Smart contract deployed to Holesky (address: 0x41B471B930CcdBe2Ea2D4114Bb95679d8B781e7b), account  0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a topped up with 1111 tokens
 
-3. CLI Dockerfile is in Go app folder, Makefile contains deployment, testing and building scripts for smart contract. 
+3. CLI Dockerfile is in Go app folder, Makefile contains deployment, testing and building scripts for smart contract and CLI docker image. 
 
-4. CLI demonstration you may find further in README in Usage examples
+4. You may find CLI demonstration  further in README in Usage examples
 
 # Smart contract
 Predeployed smart contract is at ```0x41B471B930CcdBe2Ea2D4114Bb95679d8B781e7b```.
 
-Smart contracts are located in solidity/contracts. 
+Smart contracts are located in solidity/contracts. I used openzeppelin/Ownable.sol for ownable implementation. 
 
 Tests are conducted using [hardhat](https://hardhat.org/docs). 
 
-To deploy Smart contract create .env and fill it with your data (your private key and rpc endpoint).
+To deploy Smart contract fill  .env with your data (your private key and rpc endpoint).
 
 # CLI app
 
@@ -73,7 +73,7 @@ And using flag --privateKey you may override private key from .env.
 
 2. There are several potential TODOs in smart contract which might optimize it or handle unwanted behavior (transfering to yourself and freezing already frozen account).
 
-3. Smart contract can be left without an owner, which will forever freeze frozen accounts. Potentially could be fixed by multisignature.  
+3. Smart contract can be left without an owner, which will forever freeze frozen accounts. Potentially could be fixed with multisignature. 
 
 
 # Usage examples
