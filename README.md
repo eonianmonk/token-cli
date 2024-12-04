@@ -37,6 +37,15 @@ To run smart contract tests you can use ```make test```
 To deploy smart contract yourself use ```make deploy-token```
 
 
+# Deliverables
+
+1. Solidity source code in solidity/contracts; Go CLI application in token-cli; Deployment and testing scripts in Makefile
+
+2. Smart contract deployed to Holesky (address: 0x41B471B930CcdBe2Ea2D4114Bb95679d8B781e7b), account  0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a topped up with 1111 tokens
+
+3. CLI Dockerfile is in Go app folder, Makefile contains deployment, testing and building scripts for smart contract. 
+
+4. CLI demonstration you may find further in README in Usage examples
 
 # Smart contract
 Predeployed smart contract is at ```0x41B471B930CcdBe2Ea2D4114Bb95679d8B781e7b```.
@@ -56,10 +65,28 @@ All mutating commands output transaction hash. If you use --wait-mined flag, you
 And using flag --privateKey you may override private key from .env.
 
 
-# Potential improvements 
+# Assumptions, limitations and potential improvements 
 
 1. There should be only one config, not some parts in .env and some in config.yaml. 
 
+2. There are several potential TODOs in smart contract which might optimize it or handle unwanted behavior (transfering to yourself and freezing already frozen account).
+
+3. Smart contract can be left without an owner, which will forever freeze frozen accounts. Potentially could be fixed by multisignature.  
+
+
+# Usage examples
+
+Minting to `0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a`:
+
+```
+me@mypc:~$ ./cli.sh mint --to 0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a --amount 1111
+Using 0xea8561756516A3f48d3eCF2229A8a07F5916a39c private key
+minted 1111 to 0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a. Tx: 0xc8d962602bf2dd741a5588f09432989430aa50867eb619adf812beab8b951a03
+
+me@mypc:~$ ./cli.sh balanceOf --address 0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a
+Using 0xea8561756516A3f48d3eCF2229A8a07F5916a39c private key
+0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a balance is 1111
+```
 
 ### CLI help 
 
@@ -93,20 +120,6 @@ Commands:
     transfer tokens
 
 Run "token-cli <command> --help" for more information on a command.
-```
-
-# Usage examples
-
-Minting to `0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a`:
-
-```
-me@mypc:~$ ./cli.sh mint --to 0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a --amount 1111
-Using 0xea8561756516A3f48d3eCF2229A8a07F5916a39c private key
-minted 1111 to 0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a. Tx: 0xc8d962602bf2dd741a5588f09432989430aa50867eb619adf812beab8b951a03
-
-me@mypc:~$ ./cli.sh balanceOf --address 0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a
-Using 0xea8561756516A3f48d3eCF2229A8a07F5916a39c private key
-0x4770B19C113cbC07e220d51E6A9fBC4ED30Fa51a balance is 1111
 ```
 
 ### freeze/unfreeze:
