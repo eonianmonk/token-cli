@@ -1,6 +1,6 @@
 # token-cli
 
-token smart contract and  golang cli app to control it
+token smart contract and  golang cli app to interact with it
 
 # Requirements: 
 
