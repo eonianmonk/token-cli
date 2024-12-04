@@ -1,0 +1,5 @@
+networks:
+  holesky:
+    rpc: https://ethereum-holesky.publicnode.com
+    chain_id: 17000
+    contract_address: 0x41B471B930CcdBe2Ea2D4114Bb95679d8B781e7b
