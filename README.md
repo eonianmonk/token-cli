@@ -28,7 +28,7 @@ token smart contract and  golang cli app to interact with it
 
 ```chmod +x ./cli.sh```
 
-5. To start interacting with smart contract create .env file and fill it according to .env.example (private keys in hexadecimal; also you may omit holesky rps endpoint and deployment private key if you dont plan to deploy smart contract, sender_private_key is sufficient for running cli app).
+5. To start interacting with smart contract create .env file in repo root and fill it according to .env.example (private keys in hexadecimal; you may omit holesky rps endpoint and deployment private key if you dont plan to deploy smart contract, sender_private_key is sufficient for running cli app).
 
 It must be enough and now you can use ./cli.sh, for available commands you can run ```./cli.sh --help``` or ```sudo ./cli.sh --help``` if your docker does not work without sudo
 
