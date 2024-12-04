@@ -24,4 +24,8 @@ abstract contract Freezable {
         require(!frozenAccounts[account],"account is frozen");
         _;
     }
+
+    function isFrozen(address account) public view virtual returns (bool) {
+        return frozenAccounts[account];
+    }
 }

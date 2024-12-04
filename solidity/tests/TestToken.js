@@ -22,16 +22,16 @@ describe("TestToken", async () => {
     ).to.be.revertedWithCustomError(token, "OwnableUnauthorizedAccount").withArgs(addr1);
   });
 
-  it("Should prevent minting to 0 address", async () => {
-    expect(
+  it("Shouldn't mint to 0 address", async () => {
+    await expect(
       token.mint(ethers.ZeroAddress, 1)
     ).to.be.revertedWith("minting to zero address is not allowed")
   })
 
   it("Shouldn't mint to frozen account", async () => {
     await token.freeze(addr1.address);
-    expect(
-      token.mint(addr1.address)
+    await expect(
+      token.mint(addr1.address, 10)
     ).to.be.revertedWith("account is frozen");
   })
 
@@ -65,7 +65,7 @@ describe("TestToken", async () => {
   })
 
   // Freeze Tests
-  it("Should prevent transfers from frozen accounts", async ()=> {
+  it("Shouldn't transfer from frozen accounts", async ()=> {
     await token.mint(addr1.address, 1000);
     await token.freeze(addr1.address);
     await expect(
@@ -76,13 +76,10 @@ describe("TestToken", async () => {
   it("Should allow transfers after unfreezing", async () => {
     await token.mint(addr1.address, 1000);
     await token.freeze(addr1.address);
-    // frozen error
     await expect(
       token.connect(addr1).transfer(addr2.address, 500)
     ).to.be.revertedWith("account is frozen");
-    // unfreeze
     await token.unfreeze(addr1.address);
-    // transfer
     await token.connect(addr1).transfer(addr2.address, 500);
     expect(await token.balanceOf(addr2.address)).to.equal(500);
   });
