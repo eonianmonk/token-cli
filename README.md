@@ -5,7 +5,7 @@ token smart contract and  golang cli app to control it
 - node version >= 20 (for hardhat)
 - go version >= 1.22
 - abigen >= 1.10
-- installed docker
+- docker
 
 # Quickstart 
 
