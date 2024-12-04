@@ -1,7 +1,9 @@
 # token-cli
+
 token smart contract and  golang cli app to control it
 
 # Requirements: 
+
 - node version >= 20 (for hardhat)
 - go version >= 1.22
 - abigen >= 1.10
@@ -28,13 +30,13 @@ token smart contract and  golang cli app to control it
 
 5. To start interacting with smart contract create .env file and fill it according to .env.example (private keys in hexadecimal; also you may omit holesky rps endpoint and deployment private key if you dont plan to deploy smart contract, sender_private_key is sufficient for running cli app).
 
-If you want to interact with your deployed smart contract or on another chain you may modify your access in config.yaml. Also this config supports multiple networks simultaneously and you may specify the target network/contract with --network flag for cli app.
-
 It must be enough and now you can use ./cli.sh, for available commands you can run ```./cli.sh --help``` or ```sudo ./cli.sh --help``` if your docker does not work without sudo
 
 To run smart contract tests you can use ```make test```
 
 To deploy smart contract yourself use ```make deploy-token```
+
+If you want to interact with your deployed smart contract or on another chain you need to modify config.yaml. Also this config supports multiple networks simultaneously and you may specify the target network/contract with --network flag for cli app.
 
 
 # Deliverables
