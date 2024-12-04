@@ -11,7 +11,7 @@ import (
 )
 
 type Unfreeze struct {
-	Address util.HexBytes `help:"unfreeze account address"`
+	Address util.HexBytes `required:"" help:"unfreeze account address"`
 }
 
 func (cmd *Unfreeze) Run(cfg *GlobalCfg) error {
