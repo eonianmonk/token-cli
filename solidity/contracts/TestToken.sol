@@ -39,7 +39,8 @@ contract TestToken is Ownable,Freezable,ITestToken {
     function transfer(address receiver, uint256 amount) public notFrozen(msg.sender) notFrozen(receiver) {
         require(amount > 0, "amount must be positive");
         require(balances[msg.sender] >= amount, "insufficient balance for transfer amount");
-        
+        // TODO: forbid transfer to yourself?
+
         balances[msg.sender] -= amount;
 
         // no need to track burnt tokens
