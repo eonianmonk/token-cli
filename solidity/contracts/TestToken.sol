@@ -5,6 +5,8 @@ pragma solidity ^0.8.20;
 // store owner in constructor and check when onlyOwner modifier is applied 
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 import "@openzeppelin/contracts/access/Ownable.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 import "./Freezable.sol";
 import "./interfaces/ITestToken.sol";
 
